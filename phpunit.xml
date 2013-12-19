@@ -1,0 +1,17 @@
+<phpunit bootstrap="protected/tests/bootstrap.php"
+  colors="false"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  stopOnFailure="false">
+  <testsuites>
+    <testsuite name="yii testsuite">
+      <directory>./protected/tests/unit/</directory>
+      <directory>./protected/tests/functional/</directory>
+    </testsuite>
+  </testsuites>
+  <selenium>
+    <browser name="Internet Explorer" browser="*iexplore" />
+    <browser name="Firefox" browser="*firefox" />
+  </selenium>
+</phpunit>
