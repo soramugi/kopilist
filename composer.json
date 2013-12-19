@@ -1,0 +1,15 @@
+{
+  "require": {
+    "php": ">=5.3.2",
+    "yiisoft/yii": "1.1.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit-selenium": "*",
+    "phpunit/phpunit-story": "*",
+    "phpunit/dbunit": "*",
+    "phpunit/php-invoker": "*"
+  },
+  "config": {
+    "vendor-dir": "protected/vendor"
+  }
+}
