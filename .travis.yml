@@ -8,5 +8,7 @@ php:
 
 before_script:
   - composer install
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 
 script: protected/vendor/bin/phpunit
