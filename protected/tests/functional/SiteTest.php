@@ -14,7 +14,7 @@ class SiteTest extends WUnitTestCase
 	{
 
 		$client = static::createClient();
-		$crawler = $client->request('GET', '?r=site/contact');
+		$crawler = $client->request('GET', '/site/contact');
 		$this->assertTrue($crawler->filter('html:contains("Contact Us")')->count() > 0);
 
 		$this->assertTrue($crawler->filter('input[id=ContactForm_name]')->count() > 0);
