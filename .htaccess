@@ -2,6 +2,8 @@ RewriteEngine on
 
 RedirectMatch 403 /\..*$
 RedirectMatch 403 README.markdown
+RedirectMatch 403 Boxfile
+RedirectMatch 403 index-test.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php
