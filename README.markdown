@@ -2,6 +2,8 @@
 
 みんなのやりたい事リスト
 
+<http://kopilist.pagodabox.com>
+
 # Setting
 
     git clone https://github.com/soramugi/kopilist.git /var/www/kopilist/
