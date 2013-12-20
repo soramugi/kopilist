@@ -45,7 +45,8 @@ return array(
 			'showScriptName'=>false
 		),
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/kopilist.db',
+			'tablePrefix' => 'tbl_',
 		),
 		// uncomment the following to use a MySQL database
 		/*
@@ -56,7 +57,7 @@ return array(
 			'password' => '',
 			'charset' => 'utf8',
 		),
-		*/
+		 */
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -73,7 +74,7 @@ return array(
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				*/
+				 */
 			),
 		),
 	),

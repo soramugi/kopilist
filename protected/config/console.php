@@ -12,7 +12,8 @@ return array(
 	// application components
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/kopilist.db',
+			'tablePrefix' => 'tbl_',
 		),
 		// uncomment the following to use a MySQL database
 		/*
