@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "06f2193f1af4f164b78d30711a511a00",
+    "hash": "7abdfe49622df850cf6654f6f8a45ab8",
     "packages": [
         {
             "name": "yiisoft/yii",

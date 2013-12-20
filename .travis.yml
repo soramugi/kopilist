@@ -7,7 +7,7 @@ php:
   # Not support xdebug_get_headers()
   #- hhvm
 
-install:
+script:
+  - cd protected/
   - composer install
-
-script: protected/vendor/bin/phpunit
+  - cd tests/

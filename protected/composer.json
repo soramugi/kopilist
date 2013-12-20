@@ -6,8 +6,5 @@
   "require-dev": {
     "phpunit/dbunit": "*",
     "phpunit/php-invoker": "*"
-  },
-  "config": {
-    "vendor-dir": "protected/vendor"
   }
 }
