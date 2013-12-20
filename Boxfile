@@ -15,9 +15,7 @@ web1:
     - zip
     - intl
   after_build:
-    - "cd protected"
-    - "curl -sS https://getcomposer.org/installer | php"
-    - "php composer.phar install"
+    - "cd protected && curl -sS https://getcomposer.org/installer | php && php composer.phar install"
 
 db1:
   type: mysql
