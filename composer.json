@@ -4,8 +4,6 @@
     "yiisoft/yii": "1.1.*"
   },
   "require-dev": {
-    "phpunit/phpunit-selenium": "*",
-    "phpunit/phpunit-story": "*",
     "phpunit/dbunit": "*",
     "phpunit/php-invoker": "*"
   },

@@ -1,0 +1,3 @@
+[submodule "protected/extensions/wunit"]
+	path = protected/extensions/wunit
+	url = https://github.com/weavora/wunit.git
