@@ -1,6 +1,7 @@
 global:
   env:
     - ENV: production
+    - PLATFORM: PAGODABOX
 
 web1:
   name: kopilist
@@ -14,6 +15,15 @@ web1:
     - curl
     - zip
     - intl
+    - dom
+    - pdo
+    - pdo_sqlite
+    - pdo_mysql
+    - apc
+    - mcrypt
+    - soap
+    - gd
+    - freetype
   after_build:
     - "cd protected && curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev"
 

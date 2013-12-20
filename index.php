@@ -2,10 +2,16 @@
 
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/protected/vendor/yiisoft/yii/framework/yii.php';
+
 $config=dirname(__FILE__).'/protected/config/main.php';
 
-// remove the following lines when in production mode
-defined('YII_DEBUG') or define('YII_DEBUG',true);
+if (isset($_SERVER['PLATFORM']) && $_SERVER['PLATFORM'] == 'PAGODABOX') {
+	$config=dirname(__FILE__).'/protected/config/pagoda.php';
+} else {
+	// remove the following lines when in production mode
+	defined('YII_DEBUG') or define('YII_DEBUG',true);
+}
+
 // specify how many levels of call stack should be shown in each log message
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
