@@ -11,6 +11,13 @@ web1:
   php_version: 5.4.14
   php_extensions:
     - mysql
+    - curl
+    - zip
+    - intl
+  after_build:
+    - "cd protected"
+    - "curl -sS https://getcomposer.org/installer | php"
+    - "php composer.phar install"
 
 db1:
   type: mysql
