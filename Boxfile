@@ -26,6 +26,7 @@ web1:
     - freetype
   after_build:
     - "cd protected && curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev"
+    - "cd protected && php yiic migrate --interactive=0"
 
 db1:
   type: mysql
