@@ -11,3 +11,4 @@ script:
   - cd protected/
   - composer install
   - cd tests/
+  - phpunit
