@@ -10,5 +10,6 @@ php:
 script:
   - cd protected/
   - composer install
+  - php yiic migrate
   - cd tests/
   - phpunit
