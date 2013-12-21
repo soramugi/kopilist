@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{list}}".
+ * This is the model class for table "{{check_list}}".
  *
- * The followings are the available columns in table '{{list}}':
+ * The followings are the available columns in table '{{check_list}}':
  * @property integer $id
  * @property integer $user_id
  * @property string $text
@@ -11,14 +11,14 @@
  * @property string $create_time
  * @property string $update_time
  */
-class List extends CActiveRecord
+class CheckList extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return '{{list}}';
+		return '{{check_list}}';
 	}
 
 	/**
@@ -32,10 +32,9 @@ class List extends CActiveRecord
 			array('user_id', 'required'),
 			array('user_id, check', 'numerical', 'integerOnly'=>true),
 			array('text', 'length', 'max'=>255),
-			array('create_time, update_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, text, check, create_time, update_time', 'safe', 'on'=>'search'),
+			array('id, user_id, text, check', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,6 +46,7 @@ class List extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -99,10 +99,31 @@ class List extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return List the static model class
+	 * @return CheckList the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	/**
+	 * This is invoked before the record is saved.
+	 * @return boolean whether the record should be saved.
+	 */
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->create_time=$this->update_time=time();
+				$this->user_id=Yii::app()->user->id;
+			}
+			else
+				$this->update_time=time();
+			return true;
+		}
+		else
+			return false;
 	}
 }
