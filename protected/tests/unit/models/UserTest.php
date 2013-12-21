@@ -9,7 +9,7 @@ class UserTest extends CDbTestCase
 	{
 		$user=User::model()->find(
 			'name=:name',
-			array(':name'=>$this->user['sample1']['name'])
+			array(':name'=>$this->user[1]['name'])
 		);
 		$this->assertInstanceOf('User', $user);
 	}
