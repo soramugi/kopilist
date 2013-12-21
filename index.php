@@ -3,10 +3,9 @@
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/protected/vendor/yiisoft/yii/framework/yii.php';
 
-if (isset($_SERVER['PLATFORM']) && $_SERVER['PLATFORM'] == 'PAGODABOX') {
-	$config=dirname(__FILE__).'/protected/config/pagoda.php';
-} else {
-	$config=dirname(__FILE__).'/protected/config/main.php';
+$config=dirname(__FILE__).'/protected/config/main.php';
+
+if($_SERVER['SERVER_ADDR'] === $_SERVER['REMOTE_ADDR']){
 	// remove the following lines when in production mode
 	defined('YII_DEBUG') or define('YII_DEBUG',true);
 }

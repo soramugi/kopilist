@@ -44,7 +44,18 @@ return array(
 			),
 			'showScriptName'=>false
 		),
-		'db'=>array(
+		'db'=>(isset($_SERVER["PLATFORM"]) && $_SERVER["PLATFORM"]=="PAGODABOX")?
+		// Pagoda config
+		array(
+			'connectionString' => 'mysql:host='.$_SERVER["DB1_HOST"].';port='.$_SERVER["DB1_PORT"].';dbname='.$_SERVER["DB1_NAME"],
+			'emulatePrepare' => true,
+			'username' => $_SERVER["DB1_USER"],
+			'password' => $_SERVER["DB1_PASS"],
+			'charset' => 'utf8',
+			'tablePrefix' => 'tbl_',
+		):
+		// Local config
+		array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/kopilist.db',
 			'tablePrefix' => 'tbl_',
 		),
