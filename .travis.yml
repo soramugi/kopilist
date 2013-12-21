@@ -8,8 +8,6 @@ php:
   #- hhvm
 
 script:
-  - cd protected/
-  - composer install
-  - php yiic migrate --interactive=0
-  - cd tests/
-  - phpunit
+  - composer install -d protected/
+  - protected/yiic migrate --interactive=0
+  - phpunit -c protected/tests/phpunit.xml
