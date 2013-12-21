@@ -15,15 +15,15 @@ web1:
     - curl
     - zip
     - intl
-    - dom
-    - pdo
-    - pdo_sqlite
+    #- dom
+    #- pdo
+    #- pdo_sqlite
     - pdo_mysql
     - apc
     - mcrypt
     - soap
     - gd
-    - freetype
+    #- freetype
   after_build:
     - "cd protected && curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev"
     - "cd protected && php yiic migrate --interactive=0"
