@@ -10,26 +10,6 @@ class SiteTest extends WUnitTestCase
 		$this->assertTrue($crawler->filter('html:contains("Welcome")')->count() > 0);
 	}
 
-	public function testContact()
-	{
-
-		$client = static::createClient();
-		$crawler = $client->request('GET', '/site/contact');
-		$this->assertTrue($crawler->filter('html:contains("Contact Us")')->count() > 0);
-
-		$this->assertTrue($crawler->filter('input[id=ContactForm_name]')->count() > 0);
-
-		$form = $crawler->selectButton('Submit')->form();
-		$form['ContactForm[name]'] = 'tester';
-		$form['ContactForm[email]'] = 'tester@example.com';
-		$form['ContactForm[subject]'] = 'test subject';
-		$crawler = $client->submit($form);
-
-		$this->assertTrue(
-			$crawler->filter('html:contains("Body cannot be blank.")')->count() > 0
-		);
-	}
-
 	public function testLoginLogout()
 	{
 		$client = static::createClient();
