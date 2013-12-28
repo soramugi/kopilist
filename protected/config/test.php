@@ -1,5 +1,10 @@
 <?php
 
+$_SERVER["CONSUMER_KEY"]    = 'hugehuge';
+$_SERVER["CONSUMER_SECRET"] = 'hugehuge';
+$_SERVER["HTTPS"]           = 'http://';
+$_SERVER["HTTP_HOST"]       = 'localhost';
+
 return CMap::mergeArray(
 	require(dirname(__FILE__).'/main.php'),
 	array(
@@ -18,6 +23,6 @@ return CMap::mergeArray(
 				'connectionString'=>'DSN for test database',
 			),
 			 */
-		),
-	)
-);
+			),
+		)
+	);

@@ -35,6 +35,12 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+		'twitter' => array(
+			'class' => 'YiiTwitter',
+			'consumer_key' => $_SERVER["CONSUMER_KEY"],
+			'consumer_secret' => $_SERVER["CONSUMER_SECRET"],
+			'callback' => (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . '/site/twitterCallBack',
+		),
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'urlFormat'=>'path',

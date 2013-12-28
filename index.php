@@ -14,4 +14,5 @@ if($_SERVER['SERVER_ADDR'] === $_SERVER['REMOTE_ADDR']){
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 require_once($yii);
+require_once('protected/vendor/autoload.php');
 Yii::createWebApplication($config)->run();

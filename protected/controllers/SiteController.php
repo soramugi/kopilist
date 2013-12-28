@@ -11,6 +11,7 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
+
 	}
 
 	/**
@@ -32,25 +33,62 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		$this->render('login');
+	}
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
+	public function actionTwitterLogin()
+	{
+		//grab twitter object and request token
+		$twitter = Yii::app()->twitter->getTwitter();
+		$request_token = $twitter->getRequestToken(
+			Yii::app()->twitter->getCallback()
+		);
+		session_start();
+		//set some session info
+		$_SESSION['oauth_token'] = $token = $request_token['oauth_token'];
+		$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
+		session_write_close();
+
+		if($twitter->http_code == 200){
+			//get twitter connect url
+			$url = $twitter->getAuthorizeURL($token);
+			//send them
+			$this->redirect($url);
+		}else{
+			//error here
+			$this->redirect(Yii::app()->homeUrl);
+		}
+	}
+
+	public function actionTwitterCallBack()
+	{
+		session_start();
+		if (
+			isset($_REQUEST['oauth_token'])
+			&& $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']
+		) {
+			$this->redirect(Yii::app()->homeUrl);
 		}
 
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+		$twitter = Yii::app()->twitter->getTwitterTokened(
+			$_SESSION['oauth_token'], $_SESSION['oauth_token_secret']
+		);
+
+		$access_token = $twitter->getAccessToken($_REQUEST['oauth_verifier']);
+
+		$_SESSION['access_token'] = $access_token;
+
+		unset($_SESSION['oauth_token']);
+		unset($_SESSION['oauth_token_secret']);
+
+		if($twitter->http_code == 200){
+
+			//get user details
+			$twuser=$twitter->get("account/verify_credentials");
 		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+		session_write_close();
+
+		$this->redirect(Yii::app()->homeUrl);
 	}
 
 	/**

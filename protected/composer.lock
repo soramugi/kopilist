@@ -3,8 +3,31 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7abdfe49622df850cf6654f6f8a45ab8",
+    "hash": "5d8d054527d7f2851ed8ae70a150dd5e",
     "packages": [
+        {
+            "name": "willwharton/yii-twitter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/soramugi/yii-twitter.git",
+                "reference": "b586e95865b30776694a22fd4a4d1bb03f350100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/soramugi/yii-twitter/zipball/b586e95865b30776694a22fd4a4d1bb03f350100",
+                "reference": "b586e95865b30776694a22fd4a4d1bb03f350100",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "protected/extensions/yiitwitteroauth/YiiTwitter.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2013-12-28 01:43:55"
+        },
         {
             "name": "yiisoft/yii",
             "version": "1.1.14",
@@ -615,9 +638,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "willwharton/yii-twitter": 20
+    },
     "platform": {
         "php": ">=5.3.2"
     },
