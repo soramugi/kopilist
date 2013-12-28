@@ -81,12 +81,32 @@ class SiteController extends Controller
 		unset($_SESSION['oauth_token']);
 		unset($_SESSION['oauth_token_secret']);
 
-		if($twitter->http_code == 200){
-
-			//get user details
-			$twuser=$twitter->get("account/verify_credentials");
-		}
 		session_write_close();
+
+		if($twitter->http_code == 200){
+			$loginTwitter=LoginTwitter::model()->findByAttributes(
+				array('tw_user_id'=>$access_token['user_id'])
+			);
+			if($loginTwitter===null){
+				$access_token['tw_user_id'] = $access_token['user_id'];
+				unset($access_token['user_id']);
+				$loginTwitter = new LoginTwitter;
+				$loginTwitter->attributes=$access_token;
+				if(!$loginTwitter->save())
+					throw new CHttpException(
+						401,json_encode($loginTwitter->getErrors())
+					);
+			}
+			$identity=new UserIdentity($loginTwitter);
+			if($identity->authenticate()){
+				$duration=3600*24*30;
+				Yii::app()->user->login($identity,$duration);
+			}else{
+				throw new CHttpException(
+					401,'Unauthorized. Please do not repeat this request again.'
+				);
+			}
+		}
 
 		$this->redirect(Yii::app()->homeUrl);
 	}
