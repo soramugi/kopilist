@@ -13,6 +13,7 @@ web1:
   document_root: /
   php_version: 5.4.14
   php_date_timezone: "Asia/Tokyo"
+  php_display_errors: "0"
   php_extensions:
     - mysql
     - curl
@@ -26,6 +27,7 @@ web1:
     - mcrypt
     - soap
     - gd
+    - oauth
     #- freetype
   after_build:
     - "cd protected && curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev"
