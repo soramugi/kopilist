@@ -2,6 +2,8 @@ global:
   env:
     - ENV: production
     - PLATFORM: PAGODABOX
+    - CONSUMER_KEY: YOUR_CONSUMER_KEY
+    - CONSUMER_SECRET: YOUR_CONSUMER_SECRET
 
 web1:
   name: kopilist
