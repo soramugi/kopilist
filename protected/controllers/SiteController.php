@@ -2,6 +2,29 @@
 
 class SiteController extends Controller
 {
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		return array(
+			'accessControl', // perform access control for CRUD operations
+		);
+	}
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
+	public function accessRules()
+	{
+		return array(
+			array(
+				'deny',
+				'users'=>array('@'),
+				'actions'=>array('login','twitterLogin','twitterCallback'),
+			),
+		);
+	}
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -43,11 +66,11 @@ class SiteController extends Controller
 		$request_token = $twitter->getRequestToken(
 			Yii::app()->twitter->getCallback()
 		);
-		session_start();
+		if(!isset($_SESSION))
+			session_start();
 		//set some session info
 		$_SESSION['oauth_token'] = $token = $request_token['oauth_token'];
 		$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
-		session_write_close();
 
 		if($twitter->http_code == 200){
 			//get twitter connect url
@@ -62,7 +85,8 @@ class SiteController extends Controller
 
 	public function actionTwitterCallBack()
 	{
-		session_start();
+		if(!isset($_SESSION))
+			session_start();
 		if (
 			isset($_REQUEST['oauth_token'])
 			&& $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']
@@ -80,8 +104,6 @@ class SiteController extends Controller
 
 		unset($_SESSION['oauth_token']);
 		unset($_SESSION['oauth_token_secret']);
-
-		session_write_close();
 
 		if($twitter->http_code == 200){
 			$loginTwitter=LoginTwitter::model()->findByAttributes(
@@ -108,7 +130,7 @@ class SiteController extends Controller
 			}
 		}
 
-		$this->redirect(Yii::app()->homeUrl);
+		$this->redirect('/list/index');
 	}
 
 	/**
