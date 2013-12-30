@@ -29,7 +29,6 @@ class CheckList extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id', 'required'),
 			array('user_id, check', 'numerical', 'integerOnly'=>true),
 			array('text', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -58,7 +57,7 @@ class CheckList extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'User',
-			'text' => 'Text',
+			'text' => 'やりたい事',
 			'check' => 'Check',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
@@ -118,6 +117,7 @@ class CheckList extends CActiveRecord
 			{
 				$this->create_time=$this->update_time=time();
 				$this->user_id=Yii::app()->user->id;
+				$this->check=0;
 			}
 			else
 				$this->update_time=time();

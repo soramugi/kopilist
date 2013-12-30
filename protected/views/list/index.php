@@ -5,9 +5,11 @@ $this->breadcrumbs=array(
 	'List',
 );
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+<?php foreach($models as $_model): ?>
+<p><?php echo CHtml::encode($_model->text) ?></p>
+<?php endforeach ?>
+
+<?php $this->renderPartial('/list/_form',array(
+	'model'=>$model,
+)); ?>

@@ -25,9 +25,34 @@ class ListController extends Controller
 
 	public function actionIndex()
 	{
-		$models=LoginTwitter::model()->findByAttributes(
+		$model=new CheckList;
+		$models=CheckList::model()->findAllByAttributes(
 			array('user_id'=>Yii::app()->user->id)
 		);
-		$this->render('index',array('models'=>$models));
+		$this->render('index',array('model'=>$model,'models'=>$models));
+	}
+
+	public function actionAdd()
+	{
+		$model=new CheckList;
+
+		// uncomment the following code to enable ajax-based validation
+	/*
+	if(isset($_POST['ajax']) && $_POST['ajax']==='check-list-add-form')
+	{
+		echo CActiveForm::validate($model);
+		Yii::app()->end();
+	}
+	 */
+
+		if(isset($_POST['CheckList']))
+		{
+			$model->attributes=$_POST['CheckList'];
+			if($model->validate())
+			{
+				$model->save();
+			}
+		}
+		$this->forward('index');
 	}
 }
