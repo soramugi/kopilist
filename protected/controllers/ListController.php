@@ -59,8 +59,10 @@ class ListController extends Controller
 			);
 			if($model!==null){
 				$model->check=($model->check==1)?0:1;
-				$model->save();
+				if($model->save())
+					echo 'success!';
 			}
 		}
+		echo json_encode($_POST);
 	}
 }

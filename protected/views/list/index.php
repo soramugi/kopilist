@@ -7,20 +7,29 @@ $this->breadcrumbs=array(
 ?>
 
 <?php foreach($models as $_model): ?>
-	<p>
-		<?php echo CHtml::checkbox('check_list', false, array(
-			'id'=>"cb{$_model->id}",
-			'ajax'=>array(
-				'type'=>'POST',
-				'url'=>'check',
-				'data'=>array('pk'=>$_model->id),
-				'success'=>"function(data){
-					var cb=$('#cb{$_model->id}');
-					cb.attr('checked', !cb.is(':checked'));
-				}",
-			))); ?>
+
+	<label class="checkbox" for="checkbox<?php echo $_model->id ?>">
+<?php echo CHtml::checkbox('check_list', false, array(
+	'id'=>"checkbox{$_model->id}",
+	'data-toggle'=>'checkbox',
+	'value'=>$_model->id,
+)); ?>
 		<?php echo CHtml::encode($_model->text) ?>
-	</p>
+	</label>
 <?php endforeach ?>
 
 <?php $this->renderPartial('/list/_form',array('model'=>$model,)); ?>
+
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.8.3.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/flatui-checkbox.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$(".checkbox").click(function() {
+		$.post(
+			"check",
+			{pk : $('input',this).attr("value")}
+		);
+	});
+});
+</script>
