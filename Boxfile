@@ -13,6 +13,7 @@ web1:
   document_root: /
   php_version: 5.4.14
   php_date_timezone: "Asia/Tokyo"
+  php_default_locale: "ja_JP"
   php_display_errors: "0"
   php_extensions:
     - mysql
