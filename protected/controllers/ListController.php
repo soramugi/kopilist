@@ -26,12 +26,7 @@ class ListController extends Controller
 	public function actionIndex()
 	{
 		$model=new CheckList;
-		$models=CheckList::model()->findAllByAttributes(
-			array(
-				'user_id'=>Yii::app()->user->id,
-				'check'=>0
-			)
-		);
+		$models=CheckList::model()->notDone(Yii::app()->user->id);
 		$this->render('index',array('model'=>$model,'models'=>$models));
 	}
 

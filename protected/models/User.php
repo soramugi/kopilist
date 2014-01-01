@@ -98,4 +98,14 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function checkList($limit=-1)
+	{
+		return CheckList::model()->notDone($this->id,$limit);
+	}
+
+	public function checkListDone($limit=-1)
+	{
+		return CheckList::model()->done($this->id,$limit);
+	}
 }

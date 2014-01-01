@@ -126,4 +126,30 @@ class CheckList extends CActiveRecord
 		else
 			return false;
 	}
+
+	public function notDone($user_id,$limit=-1)
+	{
+		return $this->findAllByAttributes(
+			array(
+				'user_id'=>$user_id,
+				'check'=>0
+			),
+			array(
+				'limit'=>$limit
+			)
+		);
+	}
+
+	public function done($user_id,$limit=-1)
+	{
+		return $this->findAllByAttributes(
+			array(
+				'user_id'=>$user_id,
+				'check'=>1
+			),
+			array(
+				'limit'=>$limit
+			)
+		);
+	}
 }
