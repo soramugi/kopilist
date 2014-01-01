@@ -4,15 +4,19 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="jp" />
+	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" />
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/flat-ui.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
+
+<div id="wrap">
 
 	<div id="mainmenu" class="navbar navbar-inverse">
 <?php $this->widget('zii.widgets.CMenu',array(
@@ -40,7 +44,7 @@
 
 </div><!-- page -->
 
-	<footer class="nav">
+	<footer id="footer" class="nav">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>
@@ -48,6 +52,7 @@
 		<a href="http://designmodo.github.io/Flat-UI/">Flat-UI</a>.
 	</footer>
 
+</div><!-- wrap -->
 
 </body>
 </html>
