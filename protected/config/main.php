@@ -9,6 +9,8 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Kopi LIst',
 	'defaultController' => 'site',
+	'sourceLanguage'=>'ja',
+	'language'=>'ja_JP',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

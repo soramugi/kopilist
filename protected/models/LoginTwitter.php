@@ -119,7 +119,10 @@ class LoginTwitter extends CActiveRecord
 		{
 			if($this->isNewRecord)
 			{
-				$this->create_time=time();
+				if(Yii::app()->db->getDriverName()==='sqlite')
+					$this->create_time=time();
+				else
+					$this->create_time=new CDbExpression('NOW()');
 				if($this->user_id===null){
 					$user = new User;
 					$user->name=$this->screen_name;

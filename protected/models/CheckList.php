@@ -115,14 +115,22 @@ class CheckList extends CActiveRecord
 		{
 			if($this->isNewRecord)
 			{
-				$this->create_time=$this->update_time=time();
+				if(Yii::app()->db->getDriverName()==='sqlite')
+					$this->create_time=$this->update_time=time();
+				else
+					$this->create_time=$this->update_time=new CDbExpression('NOW()');
 				if(Yii::app()->user->id===null)
 					return false;
 				$this->user_id=Yii::app()->user->id;
 				$this->check=0;
 			}
 			else
-				$this->update_time=time();
+			{
+				if(Yii::app()->db->getDriverName()==='sqlite')
+					$this->update_time=time();
+				else
+					$this->update_time=new CDbExpression('NOW()');
+			}
 			return true;
 		}
 		else

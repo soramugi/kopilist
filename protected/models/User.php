@@ -89,6 +89,27 @@ class User extends CActiveRecord
 	}
 
 	/**
+	 * This is invoked before the record is saved.
+	 * @return boolean whether the record should be saved.
+	 */
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				if(Yii::app()->db->getDriverName()==='sqlite')
+					$this->create_time=time();
+				else
+					$this->create_time=new CDbExpression('NOW()');
+			}
+			return true;
+		}
+		else
+			return false;
+	}
+
+	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
