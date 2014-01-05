@@ -7,7 +7,7 @@ class ListTest extends WUnitTestCase
 		'checkList'=>'CheckList',
 	);
 
-	public function testIndex()
+	public function login()
 	{
 		// login処理
 		$user=$this->user[1];
@@ -18,6 +18,12 @@ class ListTest extends WUnitTestCase
 		$identity->authenticate();
 		$duration=3600*24*30;
 		Yii::app()->user->login($identity,$duration);
+		return $user;
+	}
+
+	public function testIndex()
+	{
+		$user=$this->login();
 
 		$client = static::createClient();
 		$crawler = $client->request('GET', '/list/index');
@@ -35,15 +41,7 @@ class ListTest extends WUnitTestCase
 
 	public function testIndex_add()
 	{
-		// login処理
-		$user=$this->user[1];
-		$loginTwitter=LoginTwitter::model()->findByAttributes(
-			array('user_id'=>$user['id'])
-		);
-		$identity=new UserIdentity($loginTwitter);
-		$identity->authenticate();
-		$duration=3600*24*30;
-		Yii::app()->user->login($identity,$duration);
+		$user=$this->login();
 
 		$client = static::createClient();
 		$crawler = $client->request('GET', '/list/index');
@@ -55,6 +53,56 @@ class ListTest extends WUnitTestCase
 
 		$this->assertTrue(
 			$crawler->filter("html:contains('{$text}')")->count() > 0
+		);
+	}
+
+	public function testCheck()
+	{
+		$user=$this->login();
+
+		// 自分のチェックリストでチェックされていないもの
+		$checkList=array();
+		foreach($this->checkList as $k => $_checkList){
+			if($_checkList['user_id']==$user['id'] && $_checkList['check']==0){
+				$_checkList['id']=$k;
+				$checkList[]=$_checkList;
+			}
+		}
+
+		$client = static::createClient();
+		$crawler = $client->request(
+			'POST',
+			'/list/check',
+			array('pk'=>$checkList[0]['id'])
+		);
+
+		$this->assertTrue(
+			$crawler->filter('html:contains("success!")')->count() > 0
+		);
+	}
+
+	public function testCopy()
+	{
+		$user=$this->login();
+
+		// 自分のチェックリスト以外
+		$checkList=array();
+		foreach($this->checkList as $k => $_checkList){
+			if($_checkList['user_id']!=$user['id']){
+				$_checkList['id']=$k;
+				$checkList[]=$_checkList;
+			}
+		}
+
+		$client = static::createClient();
+		$crawler = $client->request(
+			'POST',
+			'/list/copy',
+			array('pk'=>$checkList[0]['id'])
+		);
+
+		$this->assertTrue(
+			$crawler->filter('html:contains("success!")')->count() > 0
 		);
 	}
 }
