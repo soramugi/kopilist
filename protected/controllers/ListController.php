@@ -42,6 +42,19 @@ class ListController extends Controller
 		$this->forward('index');
 	}
 
+	public function actionCopy()
+	{
+		if(isset($_POST['pk']))
+		{
+			$_model=CheckList::model()->findByPk($_POST['pk']);
+			$model=new CheckList;
+			$model->text=$_model->text;
+			if($model->validate() && $model->save())
+				echo 'success!';
+		}
+		echo json_encode($_POST);
+	}
+
 	public function actionCheck()
 	{
 		if(isset($_POST['pk']))
