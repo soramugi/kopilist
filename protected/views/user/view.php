@@ -20,3 +20,20 @@ $this->breadcrumbs=array(
 <?php $this->renderPartial('/user/_list',array('model'=>$checkLIst,)); ?>
 <?php endforeach ?>
 </div>
+
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
+
+<script>
+jQuery(function($){
+	var link = $('a[rel=popover]');
+	link.popover({
+		html: 'true',
+		content: '<small style="font-size:50%;">コピっ!</small>'
+	}).click(function () {
+		setTimeout(function () {
+			link.popover('hide');
+		}, 1000);
+		;
+	});
+});
+</script>
