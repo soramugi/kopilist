@@ -15,6 +15,6 @@ class m131228_151340_drop_login extends CDbMigration
 			'hash' => 'string NOT NULL',
 			'type' => 'string',
 			'create_time' => 'datetime',
-		));
+		), 'DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 	}
 }

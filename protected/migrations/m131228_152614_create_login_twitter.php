@@ -13,7 +13,7 @@ class m131228_152614_create_login_twitter extends CDbMigration
 			'oauth_token' => 'string NOT NULL',
 			'oauth_token_secret' => 'string NOT NULL',
 			'create_time' => 'datetime',
-		));
+		), 'DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 	}
 
 	public function safeDown()

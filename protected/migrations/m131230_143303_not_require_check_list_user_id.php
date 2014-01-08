@@ -13,7 +13,7 @@ class m131230_143303_not_require_check_list_user_id extends CDbMigration
 			'check' => 'int',
 			'create_time' => 'datetime',
 			'update_time' => 'datetime',
-		));
+		), 'DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 	}
 
 	public function safeDown()
@@ -26,6 +26,6 @@ class m131230_143303_not_require_check_list_user_id extends CDbMigration
 			'check' => 'int',
 			'create_time' => 'datetime',
 			'update_time' => 'datetime',
-		));
+		), 'DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 	}
 }
