@@ -162,4 +162,11 @@ class CheckList extends CActiveRecord
 			)
 		);
 	}
+
+	public function othersDone($user_id,$limit=-1)
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('user_id != '.$user_id.' limit '.$limit);
+		return $this->findAll($criteria);
+	}
 }

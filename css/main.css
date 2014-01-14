@@ -1,15 +1,26 @@
 html,body{
-  height:100%;
+	height:100%;
 }
 #wrap{
-  width: 100%;
-  position: relative;
-  min-height: 100%;
+	width: 100%;
+	position: relative;
+	min-height: 100%;
 }
 #footer{
-  padding-left: 20px;
-  height:100px;
-  width: 100%;
-  position:absolute;
-  bottom:0;
+	padding-left: 20px;
+	height:100px;
+	width: 100%;
+	position:absolute;
+	bottom:0;
+}
+
+#mylist{
+	float: left;
+	width: 100%;
+	margin-right: -180px;
+}
+
+#otherlist{
+	width: 180px;
+	float: right;
 }

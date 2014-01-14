@@ -27,7 +27,12 @@ class ListController extends Controller
 	{
 		$model=new CheckList;
 		$models=CheckList::model()->notDone(Yii::app()->user->id);
-		$this->render('index',array('model'=>$model,'models'=>$models));
+		$otherModels=CheckList::model()->othersDone(Yii::app()->user->id,20);
+
+		$this->render(
+			'index',
+			array('model'=>$model,'models'=>$models,'otherModels'=>$otherModels)
+		);
 	}
 
 	public function actionAdd()
