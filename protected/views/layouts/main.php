@@ -45,15 +45,17 @@
 
 </div><!-- page -->
 
-	<footer id="footer" class="nav">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-		<a href="https://pagodabox.com">pagodabox</a>.
-		<a href="http://designmodo.github.io/Flat-UI/">Flat-UI</a>.
-	</footer>
-
+<div id="push"></div>
 </div><!-- wrap -->
+
+<footer id="footer" class="nav">
+	Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+	All Rights Reserved.<br/>
+	<?php echo Yii::powered(); ?>
+	<a href="https://pagodabox.com">pagodabox</a>.
+	<a href="http://designmodo.github.io/Flat-UI/">Flat-UI</a>.
+</footer>
+
 
 </body>
 </html>
