@@ -10,7 +10,7 @@ class SiteTest extends WUnitTestCase
 		$client = static::createClient();
 		$crawler = $client->request('GET', '/site/index');
 
-		$this->assertTrue($crawler->filter('html:contains("Welcome")')->count() > 0);
+		$this->assertTrue($crawler->filter('html:contains("やりたい事リスト共有サービス")')->count() > 0);
 	}
 
 	public function testLoginLogout()
