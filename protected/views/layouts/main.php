@@ -51,7 +51,7 @@
 		</div><!-- wrap -->
 
 		<footer id="footer" class="nav">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by <?php echo CHtml::link('@soramugi','https://twitter.com/soramugi')?>.<br/>
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>
 		<a href="https://pagodabox.com">pagodabox</a>.
