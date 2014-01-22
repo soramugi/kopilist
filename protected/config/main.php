@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Kopi LIst',
+	'name'=>'Kopi List',
 	'defaultController' => 'site',
 	'sourceLanguage'=>'ja',
 	'language'=>'ja_JP',

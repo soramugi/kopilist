@@ -1,20 +1,16 @@
 <?php
-/* @var $this SiteController */
+	/* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
+	$this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<p>やりたい事リスト共有サービス、<i>Kopi List</i>にようこそ。</p>
 
-<p>You may change the content of this page by modifying the following two files:</p>
+<h3><?php echo CHtml::encode(Yii::app()->name); ?>の使い方</h3>
 <ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
+	<li>Twitterアカウントを使ってログインしてください。</li>
+	<li>「今晩の買い物リスト」「死ぬまでにしたい事リスト」どんどん書き出していって見てください。</li>
+	<li>他の人のリストを覗いてみましょう。真似したいやりたい事があったら「コピー」のボタンで自分のリストにコピーしよう。</li>
 </ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
