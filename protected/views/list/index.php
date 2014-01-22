@@ -8,8 +8,9 @@
 
 <div id="mylist">
 
-	<?php foreach($models as $_model): ?>
+	<?php $this->renderPartial('/list/_form',array('model'=>$model,)); ?>
 
+	<?php foreach($models as $_model): ?>
 	<label class="checkbox" for="checkbox<?php echo $_model->id ?>">
 		<?php echo CHtml::checkbox('check_list', false, array(
 				'id'=>"checkbox{$_model->id}",
@@ -21,7 +22,7 @@
 	</label>
 	<?php endforeach ?>
 
-	<?php $this->renderPartial('/list/_form',array('model'=>$model,)); ?>
+	<?php echo CHtml::link('reload','/list/index',array('class'=>'btn btn-block btn-lg btn-primary'))?>
 
 </div>
 

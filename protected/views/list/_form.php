@@ -1,27 +1,24 @@
 <?php
-/* @var $this CheckListController */
-/* @var $model CheckList */
-/* @var $form CActiveForm */
+	/* @var $this CheckListController */
+	/* @var $model CheckList */
+	/* @var $form CActiveForm */
 ?>
 
-<div class="row form-group">
+<div class="form-group">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'check-list-add-form',
-	'action'=>'/list/add',
-)); ?>
+	<?php $form=$this->beginWidget('CActiveForm', array(
+			'id'=>'check-list-add-form',
+			'action'=>'/list/add',
+		)
+	); ?>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="col-md-3">
-		<?php echo $form->textField($model,'text',array('placeholder'=>'やりたい事','class'=>'form-control')); ?>
-		<?php echo $form->error($model,'text'); ?>
-	</div>
+	<?php echo $form->textField($model,'text',array('placeholder'=>'やりたい事','class'=>'form-control')); ?>
+	<?php echo $form->error($model,'text'); ?>
 
-	<div class="col-md-2 buttons">
-		<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-block btn-lg btn-default')); ?>
-	</div>
+	<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-block btn-lg btn-default')); ?>
 
-<?php $this->endWidget(); ?>
+	<?php $this->endWidget(); ?>
 
 </div><!-- form-group -->
